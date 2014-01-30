@@ -19,7 +19,7 @@ DEPFILE = $(DEPDIR)/$(*F)
 all: $(TARGETS)
 
 sjasm$(EXTENSION): $(DEPDIR) $(OBJECTS)
-	g++ $(LDFLAGS) -o $@ $(OBJECTS) 
+	$(CXX) $(LDFLAGS) -o $@ $(OBJECTS) 
 	strip $@
 
 clean:

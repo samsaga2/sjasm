@@ -120,11 +120,7 @@ int main(int argc, char *argv[]) {
 #ifdef _DEBUG
   cout << "Sjasm v" << version << " [" << __DATE__ " " << __TIME__ << "]\n";
 #else
-#ifdef _METARM
-  cout << "Sjasm v" << version << " - www.xl2s.tk\n";
-#else
   cout << "Sjasm Z80 Assembler v" << version << " - www.xl2s.tk\n";
-#endif
 #endif
 
   if (argc==1) {
@@ -157,10 +153,6 @@ int main(int argc, char *argv[]) {
   initPidata();
   initDir();
   initPiMSX();
-#ifdef METARM
-  initPiThumb();
-  initPiArm();
-#endif
 
   time_t st=time(0);
   strftime(tobuffer,64,"%H:%M:%S",localtime(&st)); starttime=tobuffer;

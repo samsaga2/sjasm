@@ -34,20 +34,6 @@ void dirZ80(string &line, RawSource *rs) {
   checkjunk(line);
 }
 
-#ifdef METARM
-void dirTHUMB(string &line, RawSource *rs) {
-  piCPU=pithumb;
-  rs->GetSource().push_back(new ListMode(plist=listlistline16));
-  checkjunk(line);
-}
-
-void dirARM(string &line, RawSource *rs) {
-  piCPU=piarm;
-  rs->GetSource().push_back(new ListMode(plist=listlistline32));
-  checkjunk(line);
-}
-#endif
-
 void dirEND(string &line, RawSource *) {
   stop._stop=END;
   checkjunk(line);
@@ -252,13 +238,7 @@ void initDir() {
     const_cast<char *>("org"),dirORG,
     const_cast<char *>("size"),dirSIZE,
     const_cast<char *>("error"),dirERROR,
-
     const_cast<char *>("z80"),dirZ80,
-#ifdef METARM
-    const_cast<char *>("thumb"),dirTHUMB,
-    const_cast<char *>("arm"),dirARM,
-#endif
-
     const_cast<char *>("incbin."),dirINCBINDOT,
   };
   dirfuntab.init(funs, sizeof funs/sizeof funs[0]);

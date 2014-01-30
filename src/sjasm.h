@@ -25,33 +25,11 @@
 */
 
 #define VERSION "004230"
-//#define METARM
 
 #ifdef WIN32
 #define SLASH '\\'
 #define BADSLASH '/'
 #define NEWLINE "\r\n"
-
-//#include <windows.h>
-
-//#pragma warning(disable: 4267)
-//#pragma warning(disable: 4018)
-//#pragma warning(disable: 4800)
-
-//#pragma warning(disable: 4311)
-//#pragma warning(disable: 4244)
-//#pragma warning(disable: 4786)
-
-#pragma warning(disable: 4996) // this function or variable may be unsafe
-#pragma warning(disable: 4706) // assignment within conditional expression
-#pragma warning(disable: 4127) // conditional expression is constant
-#pragma warning(disable: 4389) // signed/unsigned mismatch
-//#pragma warning(disable: 4100) // unreferenced formal parameter
-#pragma warning(disable: 4510) // default constructor could not be generated
-#pragma warning(disable: 4610) // struct can never be instantiated - user defined constructor
-#pragma warning(disable: 4512) // assignment operator could not be generated
-#pragma warning(disable: 4244) // conversion from 'bla' to 'blabla', possible loss of data
-
 #else
 #define SLASH '/'
 #define BADSLASH '\\'
@@ -113,10 +91,6 @@ extern NumLabelTable numlabtab;
 #include "directives.h"
 #include "errors.h"
 #include "pimsx.h"
-#ifdef METARM
-#include "pithumb.h"
-#include "piarm.h"
-#endif
 
 extern ErrorTable errtab;
 extern stack<int> mapadrstack;

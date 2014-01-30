@@ -26,25 +26,26 @@
 
 #include "sjasm.h"
 
-enum Z80Reg { Z80_B=0,Z80_C,Z80_D,Z80_E,Z80_H,Z80_L,Z80_A=7,
-              Z80_I,Z80_R,Z80_F,Z80_IXH,Z80_IXL,Z80_IYH,Z80_IYL,
-              Z80_BC=0x10,
-              Z80_DE=0x20,
-              Z80_HL=0x30,
-              Z80_IX=0xdd,
-              Z80_IY=0xfd,
-              Z80_SP=0x40,Z80_AF=0x50,
-              Z80_M,Z80_NC,Z80_NZ,Z80_P,Z80_PE,Z80_PO,Z80_Z,
-              Z80_nn,Z80_UNK=-1,
-              Z80mBC=Z80_BC+0x100,Z80miBC,Z80mdBC,Z80mBCi,Z80mBCd,
-              Z80mDE=Z80_DE+0x100,Z80miDE,Z80mdDE,Z80mDEi,Z80mDEd,
-              Z80mHL=Z80_HL+0x100,Z80miHL,Z80mdHL,Z80mHLi,Z80mHLd,
-              Z80mIX=Z80_IX+0x100,Z80miIX,Z80mdIX,Z80mIXi,Z80mIXd,
-              Z80mIY=Z80_IY+0x100,Z80miIY,Z80mdIY,Z80mIYi,Z80mIYd,
-              Z80mSP=Z80_SP+0x100,
-              Z80mnn=Z80_nn+0x100,
-              Z80mC=Z80_C+0x100,
-              Z80_DUMMY
+enum Z80Reg {
+  Z80_B = 0, Z80_C, Z80_D, Z80_E, Z80_H, Z80_L, Z80_A = 7, 
+  Z80_I, Z80_R, Z80_F, Z80_IXH, Z80_IXL, Z80_IYH, Z80_IYL, 
+  Z80_BC = 0x10, 
+  Z80_DE = 0x20, 
+  Z80_HL = 0x30, 
+  Z80_IX = 0xdd, 
+  Z80_IY = 0xfd, 
+  Z80_SP = 0x40, Z80_AF = 0x50, 
+  Z80_M, Z80_NC, Z80_NZ, Z80_P, Z80_PE, Z80_PO, Z80_Z, 
+  Z80_nn, Z80_UNK = -1, 
+  Z80mBC = Z80_BC + 0x100, Z80miBC, Z80mdBC, Z80mBCi, Z80mBCd, 
+  Z80mDE = Z80_DE + 0x100, Z80miDE, Z80mdDE, Z80mDEi, Z80mDEd, 
+  Z80mHL = Z80_HL + 0x100, Z80miHL, Z80mdHL, Z80mHLi, Z80mHLd, 
+  Z80mIX = Z80_IX + 0x100, Z80miIX, Z80mdIX, Z80mIXi, Z80mIXd, 
+  Z80mIY = Z80_IY + 0x100, Z80miIY, Z80mdIY, Z80mIYi, Z80mIYd, 
+  Z80mSP = Z80_SP + 0x100, 
+  Z80mnn = Z80_nn + 0x100, 
+  Z80mC = Z80_C + 0x100, 
+  Z80_DUMMY
 };
 
 Z80Reg getz80reg(string &ns) {

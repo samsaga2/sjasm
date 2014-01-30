@@ -24,5 +24,7 @@
 
 */
 
+#pragma once
+
 void initPiMSX();
-void pimsx(string&,SourceList*);
+void pimsx(string&, SourceList*);
