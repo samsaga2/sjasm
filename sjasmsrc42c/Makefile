@@ -38,6 +38,5 @@ install: all
 
 $(DEPDIR):
 	@mkdir $(DEPDIR)
-	
--include $(OBJECTS:%.o=$(DEPDIR)/%.P)
 
+-include $(OBJECTS:%.o=$(DEPDIR)/%.P)
