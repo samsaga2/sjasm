@@ -24,6 +24,7 @@
 
 */
 
+#include <cstdlib>
 #include "sjasm.h"
 
 Options options;

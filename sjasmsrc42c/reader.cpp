@@ -26,6 +26,7 @@
 
 // reader.cpp
 
+#include <cstdlib>
 #include "sjasm.h"
 
 int cmphstr(string &p1, string p2) {
@@ -76,7 +77,7 @@ string tolower(string b) {
   return bp;
 }
 
-inline void skipblanks(string &p) {
+void skipblanks(string &p) {
   int pos=(int)p.find_first_not_of(' ');
   if (pos==string::npos) p.clear();
   else p=p.substr(pos);

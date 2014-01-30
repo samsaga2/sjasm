@@ -28,6 +28,8 @@
 
 const int FUNTABSIZE=255;
 
+#include <cstring>
+
 typedef vector<int> IntList;
 typedef IntList::iterator iIntList;
 typedef vector<string> StringList;

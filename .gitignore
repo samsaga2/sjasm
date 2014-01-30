@@ -1,2 +1,4 @@
 ./sjasm
 ./sjasm.exe
+*.o
+.deps

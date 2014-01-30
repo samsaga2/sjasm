@@ -26,6 +26,7 @@
 
 // rawsource.cpp
 
+#include <cstdlib>
 #include "sjasm.h"
 
 extern FunctionTable<pFun,RawSource> group1iftab,group2iftab,group1tab,group2tab;

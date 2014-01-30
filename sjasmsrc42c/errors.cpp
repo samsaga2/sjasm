@@ -26,6 +26,7 @@
 
 // errors.cpp
 
+#include <cstdlib>
 #include "sjasm.h"
 
 ErrorTable errtab;

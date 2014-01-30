@@ -26,6 +26,7 @@
 
 // fileio.cpp
 
+#include <cstdio>
 #include "sjasm.h"
 
 StringList paths;
