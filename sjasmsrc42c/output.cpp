@@ -96,7 +96,7 @@ void Rout::set(string line) {
       } else {
         synerr=0;
         if (ParseExpression(line,val)) _minadres=val; else _minadres=0;
-        if (need(line,"..")) {
+        if (need(line,const_cast<char *>(".."))) {
           if (ParseExpression(line,val)) _maxadres=val; else _maxadres=BIGVALUE;
           _adrmode=ARANGE;
         } else {

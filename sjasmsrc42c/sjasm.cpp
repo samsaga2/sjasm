@@ -96,7 +96,7 @@ void getoptions(char **&argv,int &i) {
 //      case 'q': dolistfile=0; break;
       case 's': symfile=1; break;
 //      case 'l': labellisting=1; partlisting=1; break;
-      case 'i': paths.push_back(p); p=""; break;
+      case 'i': paths.push_back(p); p[0]=0; break;
       case 'j': options.optimizejumps=true; break;
       default:
         cout << "Unrecognised option: " << c << endl;

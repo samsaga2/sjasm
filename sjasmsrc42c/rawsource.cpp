@@ -268,7 +268,7 @@ int RawSource::_ParseLabel(string &line) {
   int pos,glb=0,nl=0;
   if (!mlp.empty()) {
     if (cneed(line,'@')) mlp.clear();
-    else if (need(line,".@")) {
+    else if (need(line,const_cast<char *>(".@"))) {
       do {
         int loc=(int)mlp.find_last_of('.');
         if (loc!=string::npos) mlp=mlp.substr(0,loc);

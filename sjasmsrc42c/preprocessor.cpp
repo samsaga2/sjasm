@@ -70,8 +70,8 @@ string getmacrofun(string id, string &s) {
   return "";
 }
 
-Find frepdef("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM_'\"@");
-Find fmacfun("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM_");
+Find frepdef(const_cast<char *>("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM_'\"@"));
+Find fmacfun(const_cast<char *>("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM_"));
 
 string ReplaceDefines(string s) {
   string nid,nr,res("");
@@ -502,7 +502,7 @@ int pregetmacro(string &line, bool icase, RawSource *rs, bool list, bool recursi
     }
     if (isdigit(line[0])) {
       if (!getConstant(line,mac._minnum)) { error1("constant expected"); return 0; }
-      if (need(line,"..")) {
+      if (need(line,const_cast<char *>(".."))) {
         skipblanks(line);
         if (sbcneed(line,'*'))
           mac._maxnum=BIGVALUE;
@@ -778,92 +778,92 @@ void preENDSTRUCT(string &, RawSource *) {
 
 void initpreprocessor() {
   FunctionEntry<pFun> group1if[] = {
-    "ifdef",preIFDEF,
-    "ifndef",preIFNDEF,
-    "else",preELSE,
-    "endif",preENDIF,
+    const_cast<char *>("ifdef"),preIFDEF,
+    const_cast<char *>("ifndef"),preIFNDEF,
+    const_cast<char *>("else"),preELSE,
+    const_cast<char *>("endif"),preENDIF,
 
-    "elseifdef",preELSEIFDEF,
-    "elseifndef",preELSEIFNDEF,
+    const_cast<char *>("elseifdef"),preELSEIFDEF,
+    const_cast<char *>("elseifndef"),preELSEIFNDEF,
   };
 
   FunctionEntry<pFun> group2if[] = {
-    "if",preIF,
-    "ifidn",preIFIDN,
-    "ifidni",preIFIDNI,
-    "ifdif",preIFDIF,
-    "ifdifi",preIFDIFI,
-    "ifb",preIFB,
-    "ifid",preIFID,
-    "ifstr",preIFSTR,
-    "ifnum",preIFNUM,
-    "ifnb",preIFNB,
-    "ifnid",preIFNID,
-    "ifnstr",preIFNSTR,
-    "ifnnum",preIFNNUM,
-    "ifexists",preIFEXISTS,
-    "ifnexists",preIFNEXISTS,
-    "ifin",preIFIN,
-    "ifini",preIFINI,
+    const_cast<char *>("if"),preIF,
+    const_cast<char *>("ifidn"),preIFIDN,
+    const_cast<char *>("ifidni"),preIFIDNI,
+    const_cast<char *>("ifdif"),preIFDIF,
+    const_cast<char *>("ifdifi"),preIFDIFI,
+    const_cast<char *>("ifb"),preIFB,
+    const_cast<char *>("ifid"),preIFID,
+    const_cast<char *>("ifstr"),preIFSTR,
+    const_cast<char *>("ifnum"),preIFNUM,
+    const_cast<char *>("ifnb"),preIFNB,
+    const_cast<char *>("ifnid"),preIFNID,
+    const_cast<char *>("ifnstr"),preIFNSTR,
+    const_cast<char *>("ifnnum"),preIFNNUM,
+    const_cast<char *>("ifexists"),preIFEXISTS,
+    const_cast<char *>("ifnexists"),preIFNEXISTS,
+    const_cast<char *>("ifin"),preIFIN,
+    const_cast<char *>("ifini"),preIFINI,
 
-    "elseif",preELSEIF,
-    "elseifidn",preELSEIFIDN,
-    "elseifidni",preELSEIFIDNI,
-    "elseifdif",preELSEIFDIF,
-    "elseifdifi",preELSEIFDIFI,
-    "elseifb",preELSEIFB,
-    "elseifid",preELSEIFID,
-    "elseifstr",preELSEIFSTR,
-    "elseifnum",preELSEIFNUM,
-    "elseifnb",preELSEIFNB,
-    "elseifnid",preELSEIFNID,
-    "elseifnstr",preELSEIFNSTR,
-    "elseifnnum",preELSEIFNNUM,
-    "elseifexists",preELSEIFEXISTS,
-    "elseifnexists",preELSEIFNEXISTS,
-    "elseifin",preELSEIFIN,
-    "elseifini",preELSEIFINI,
+    const_cast<char *>("elseif"),preELSEIF,
+    const_cast<char *>("elseifidn"),preELSEIFIDN,
+    const_cast<char *>("elseifidni"),preELSEIFIDNI,
+    const_cast<char *>("elseifdif"),preELSEIFDIF,
+    const_cast<char *>("elseifdifi"),preELSEIFDIFI,
+    const_cast<char *>("elseifb"),preELSEIFB,
+    const_cast<char *>("elseifid"),preELSEIFID,
+    const_cast<char *>("elseifstr"),preELSEIFSTR,
+    const_cast<char *>("elseifnum"),preELSEIFNUM,
+    const_cast<char *>("elseifnb"),preELSEIFNB,
+    const_cast<char *>("elseifnid"),preELSEIFNID,
+    const_cast<char *>("elseifnstr"),preELSEIFNSTR,
+    const_cast<char *>("elseifnnum"),preELSEIFNNUM,
+    const_cast<char *>("elseifexists"),preELSEIFEXISTS,
+    const_cast<char *>("elseifnexists"),preELSEIFNEXISTS,
+    const_cast<char *>("elseifin"),preELSEIFIN,
+    const_cast<char *>("elseifini"),preELSEIFINI,
   };
 
   FunctionEntry<pFun> group1[] = {
-    "define",preDEFINE,
-    "idefine",preIDEFINE,
-    "xdefine",preXDEFINE,
-    "xidefine",preXIDEFINE,
-    "undef",preUNDEF,
-    "assign",preASSIGN,
+    const_cast<char *>("define"),preDEFINE,
+    const_cast<char *>("idefine"),preIDEFINE,
+    const_cast<char *>("xdefine"),preXDEFINE,
+    const_cast<char *>("xidefine"),preXIDEFINE,
+    const_cast<char *>("undef"),preUNDEF,
+    const_cast<char *>("assign"),preASSIGN,
 
-    "tostr",preTOSTR,
-    "strlen",preSTRLEN,
-    "substr",preSUBSTR,
+    const_cast<char *>("tostr"),preTOSTR,
+    const_cast<char *>("strlen"),preSTRLEN,
+    const_cast<char *>("substr"),preSUBSTR,
   };
 
   FunctionEntry<pFun> group2[] = {
-    "include",preINCLUDE,
+    const_cast<char *>("include"),preINCLUDE,
 
-    "macro",preMACRODOT,
-    "imacro",preIMACRODOT,
-    "rotate",preROTATE,
-    "while",preWHILEDOT,
-    "repeat",preREPEATDOT,
-    "break",preBREAK,
-    "continue",preCONTINUE,
-    "exitmacro",preEXITMACRO,
-    "xexitmacro",preXEXITMACRO,
-    "struct",preSTRUCT,
+    const_cast<char *>("macro"),preMACRODOT,
+    const_cast<char *>("imacro"),preIMACRODOT,
+    const_cast<char *>("rotate"),preROTATE,
+    const_cast<char *>("while"),preWHILEDOT,
+    const_cast<char *>("repeat"),preREPEATDOT,
+    const_cast<char *>("break"),preBREAK,
+    const_cast<char *>("continue"),preCONTINUE,
+    const_cast<char *>("exitmacro"),preEXITMACRO,
+    const_cast<char *>("xexitmacro"),preXEXITMACRO,
+    const_cast<char *>("struct"),preSTRUCT,
 
-    "macro.",preMACRODOT,
-    "imacro.",preIMACRODOT,
-    "while.",preWHILEDOT,
-    "repeat.",preREPEATDOT,
+    const_cast<char *>("macro."),preMACRODOT,
+    const_cast<char *>("imacro."),preIMACRODOT,
+    const_cast<char *>("while."),preWHILEDOT,
+    const_cast<char *>("repeat."),preREPEATDOT,
 
-    "endmacro",preENDMACRO,
-    "endwhile",preENDWHILE,
-    "endrepeat",preENDREPEAT,
-    "endstruct",preENDSTRUCT,
+    const_cast<char *>("endmacro"),preENDMACRO,
+    const_cast<char *>("endwhile"),preENDWHILE,
+    const_cast<char *>("endrepeat"),preENDREPEAT,
+    const_cast<char *>("endstruct"),preENDSTRUCT,
 
-    "endm",preENDMACRO,
-    "ends",preENDSTRUCT,
+    const_cast<char *>("endm"),preENDMACRO,
+    const_cast<char *>("ends"),preENDSTRUCT,
   };
 
   group1iftab.init(group1if, sizeof group1if/sizeof group1if[0]);

@@ -95,7 +95,7 @@ int needcomma(string &p) {
   return 0;
 }
 
-Find fspacedot(" .");
+Find fspacedot(const_cast<char *>(" ."));
 
 string getinstructionpart(string &p) {
   int pos=fspacedot.find(p),u=0;
@@ -112,7 +112,7 @@ string getinstruction(string &p) {
   return d;
 }
 
-Find fid("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM1234567890_");
+Find fid(const_cast<char *>("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM1234567890_"));
 
 string getid(string &p) {
   skipblanks(p);
@@ -433,7 +433,7 @@ void getpage(string &s, IntList &p) {
   while(1) {
     if (ParseExpression(s,v)) min=v; else min=0;
     if ((unsigned)min>255) { min=255; error("Invalid page number"); }
-    if (need(s,"..")) {
+    if (need(s, const_cast<char *>(".."))) {
       if (ParseExpression(s,v)) max=v; else max=255;
       if ((unsigned)max>255) { max=255; error("Invalid pagerange"); }
       if ((unsigned)min>(unsigned)max) { min=max; error("Invalid pagerange"); }

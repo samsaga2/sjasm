@@ -105,7 +105,7 @@ void dirDEFPAGE(string &line, RawSource *) {
   if (!ParseExpression(line,firstpage)) { error("Syntax error",ERRREP); return; }
   if (labelnotfound) error("Forward reference");
   if (firstpage<0 || firstpage>255) { error("Illegal pagenumber"); return; }
-  if (need(line,"..")) {
+  if (need(line,const_cast<char *>(".."))) {
     if (!ParseExpression(line,lastpage)) { error("Syntax error",ERRREP); return; }
     if (labelnotfound) error("Forward reference");
     if (lastpage<0 || firstpage>lastpage) { error("Illegal pagenumber"); return; }
@@ -233,35 +233,35 @@ FunctionTable<pFun,RawSource> dirfuntab;
 
 void initDir() {
   FunctionEntry<pFun> funs[] = {
-    "end",dirEND,
-    "code",dirCODE,
-    "module",dirMODULE,
-    "endmodule",dirENDMODULE,
-    "page",dirPAGE,
-    "defpage",dirDEFPAGE,
-    "##",dirMAPALIGN,
-    "mapalign",dirMAPALIGN,
-    "map",dirMAP,
-    "endmap",dirENDMAP,
-    "align",dirALIGN,
-    "phase",dirPHASE,
-    "dephase",dirDEPHASE,
-    "incbin",/*dirINCBIN,*/ dirINCBINDOT,
-    "output",dirOUTPUT,
-    "update",dirUPDATE,
-    "incdir",dirINCDIR,
-    "assert",dirASSERT,
-    "org",dirORG,
-    "size",dirSIZE,
-    "error",dirERROR,
+    const_cast<char *>("end"),dirEND,
+    const_cast<char *>("code"),dirCODE,
+    const_cast<char *>("module"),dirMODULE,
+    const_cast<char *>("endmodule"),dirENDMODULE,
+    const_cast<char *>("page"),dirPAGE,
+    const_cast<char *>("defpage"),dirDEFPAGE,
+    const_cast<char *>("##"),dirMAPALIGN,
+    const_cast<char *>("mapalign"),dirMAPALIGN,
+    const_cast<char *>("map"),dirMAP,
+    const_cast<char *>("endmap"),dirENDMAP,
+    const_cast<char *>("align"),dirALIGN,
+    const_cast<char *>("phase"),dirPHASE,
+    const_cast<char *>("dephase"),dirDEPHASE,
+    const_cast<char *>("incbin"),/*dirINCBIN,*/ dirINCBINDOT,
+    const_cast<char *>("output"),dirOUTPUT,
+    const_cast<char *>("update"),dirUPDATE,
+    const_cast<char *>("incdir"),dirINCDIR,
+    const_cast<char *>("assert"),dirASSERT,
+    const_cast<char *>("org"),dirORG,
+    const_cast<char *>("size"),dirSIZE,
+    const_cast<char *>("error"),dirERROR,
 
-    "z80",dirZ80,
+    const_cast<char *>("z80"),dirZ80,
 #ifdef METARM
-    "thumb",dirTHUMB,
-    "arm",dirARM,
+    const_cast<char *>("thumb"),dirTHUMB,
+    const_cast<char *>("arm"),dirARM,
 #endif
 
-    "incbin.",dirINCBINDOT,
+    const_cast<char *>("incbin."),dirINCBINDOT,
   };
   dirfuntab.init(funs, sizeof funs/sizeof funs[0]);
 }

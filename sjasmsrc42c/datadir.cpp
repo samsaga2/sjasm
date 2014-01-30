@@ -157,14 +157,14 @@ void piASCZ(string line,Data &e) {
 void piASCMAP(string line, Data &) {
   int first,last;
   if (!ParseExpression(line,first)) { error("Character(range) expected"); return; }
-  if (need(line,"..")) {
+  if (need(line, const_cast<char *>(".."))) {
     if (!ParseExpression(line,last)) { error("Character(range) expected"); return; }
   } else last=first;
   if (first!=last) check8u(last); check8u(first);
   if (first>last) { error("Illegal range");  }
   ++last;
   if (!needcomma(line)) return;
-  if (need(line,"=>")) {
+  if (need(line, const_cast<char *>("=>"))) {
     int a,b;
     if (!ParseExpression(line,b)) { error("Base expected"); return; }
     if (comma(line)) {
@@ -283,31 +283,31 @@ FunctionTable<pFun,RawSource> datafuntab;
 
 void initPidata() {
   FunctionEntry<pFun> funs[] = {
-    "byte",pdDB,
-    "word",pdDW,
-    "dword",pdDD,
-    "db",pdDB,
-    "dc",pdDC,
-    "dd",pdDD,
-    "ds",pdDS,
-    "dt",pdDT,
-    "dw",pdDW,
-    "dz",pdDZ,
-    "abyte",pdABYTE,
-    "abytec",pdABYTEC,
-    "abytez",pdABYTEZ,
-    "block",pdDS,
-    "asc",pdASC,
-    "ascc",pdASCC,
-    "ascz",pdASCZ,
-    "ascmap",pdASCMAP,
-    "ascmap.reset",pdASCMAPRESET,
-    "ascmap.clear",pdASCMAPCLEAR,
-    "defb",pdDB,
-    "defw",pdDW,
-    "defs",pdDS,
-    "defd",pdDD,
-    "defm",pdDB
+    const_cast<char *>("byte"),pdDB,
+    const_cast<char *>("word"),pdDW,
+    const_cast<char *>("dword"),pdDD,
+    const_cast<char *>("db"),pdDB,
+    const_cast<char *>("dc"),pdDC,
+    const_cast<char *>("dd"),pdDD,
+    const_cast<char *>("ds"),pdDS,
+    const_cast<char *>("dt"),pdDT,
+    const_cast<char *>("dw"),pdDW,
+    const_cast<char *>("dz"),pdDZ,
+    const_cast<char *>("abyte"),pdABYTE,
+    const_cast<char *>("abytec"),pdABYTEC,
+    const_cast<char *>("abytez"),pdABYTEZ,
+    const_cast<char *>("block"),pdDS,
+    const_cast<char *>("asc"),pdASC,
+    const_cast<char *>("ascc"),pdASCC,
+    const_cast<char *>("ascz"),pdASCZ,
+    const_cast<char *>("ascmap"),pdASCMAP,
+    const_cast<char *>("ascmap.reset"),pdASCMAPRESET,
+    const_cast<char *>("ascmap.clear"),pdASCMAPCLEAR,
+    const_cast<char *>("defb"),pdDB,
+    const_cast<char *>("defw"),pdDW,
+    const_cast<char *>("defs"),pdDS,
+    const_cast<char *>("defd"),pdDD,
+    const_cast<char *>("defm"),pdDB
   };
   datafuntab.init(funs, sizeof funs/sizeof funs[0]);
   for (int i=0; i!=256; ++i) smap[i]=map[i]=(byte)i;

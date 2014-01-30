@@ -28,8 +28,8 @@
 
 #include "sjasm.h"
 
-Find findlabelchar("qazxswedcvfrtgbnhyujmkiolpQWERTYUIOPLKJHGFDSAZXCVBNM0123456789_.");
-Find findconstantchar("_0123456789abcdefhoqABCDEFHOQ");
+Find findlabelchar(const_cast<char *>("qazxswedcvfrtgbnhyujmkiolpQWERTYUIOPLKJHGFDSAZXCVBNM0123456789_."));
+Find findconstantchar(const_cast<char *>("_0123456789abcdefhoqABCDEFHOQ"));
 
 int getLabelValue(string &ns, int &nval, int &npag) {
   string mlp=maclabp;
@@ -38,7 +38,7 @@ int getLabelValue(string &ns, int &nval, int &npag) {
   again=1;
   if (!mlp.empty()) {
     if (cneed(s,'@')) mlp.clear();
-    else if (need(s,".@")) {
+    else if (need(s,const_cast<char *>(".@"))) {
       do {
         loc=(int)mlp.find_last_of('.');
         if (loc!=string::npos) mlp=mlp.substr(0,loc);
@@ -185,7 +185,7 @@ int ParseExpPrim(string &p, int &nval) {
 int ParseExpUnair(string &p, int &nval) {
   int right;
   int oper;
-  if ((oper=need(p,"! ~ + - ")) || (oper=needa(p,"not",'!',"low",'l',"high",'h'))) {
+  if ((oper=need(p,const_cast<char *>("! ~ + - "))) || (oper=needa(p,"not",'!',"low",'l',"high",'h'))) {
     switch (oper) {
     case '!': if(!ParseExpUnair(p,right)) return 0; nval=-!right; break;
     case '~': if(!ParseExpUnair(p,right)) return 0; nval=~right; break;
@@ -202,7 +202,7 @@ int ParseExpUnair(string &p, int &nval) {
 int ParseExpPow(string &p, int &nval) {
   int left,right;
   if (!ParseExpUnair(p,left)) return 0;
-  while (need(p,"**")) {
+  while (need(p,const_cast<char *>("**"))) {
     if (!ParseExpUnair(p,right)) return 0;
     if (right<0) nval=0;
     else for (nval=right&1?left:1,right>>=1;right;right>>=1) { left*=left; if (right&1) nval*=left; }
@@ -215,7 +215,7 @@ int ParseExpMul(string &p, int &nval) {
   int left,right;
   int oper;
   if (!ParseExpPow(p,left)) return 0;
-  while ((oper=need(p,"* / % ")) || (oper=needa(p,"mod",'%'))) {
+  while ((oper=need(p,const_cast<char *>("* / % "))) || (oper=needa(p,"mod",'%'))) {
     if (!ParseExpPow(p,right)) return 0;
     switch (oper) {
     case '*': left*=right; break;
@@ -231,7 +231,7 @@ int ParseExpAdd(string &p, int &nval) {
   int left,right;
   int oper;
   if (!ParseExpMul(p,left)) return 0;
-  while (oper=need(p,"+ - ")) {
+  while (oper=need(p,const_cast<char *>("+ - "))) {
     if (!ParseExpMul(p,right)) return 0;
     switch (oper) {
     case '+': left+=right; break;
@@ -246,7 +246,7 @@ int ParseExpShift(string &p, int &nval) {
   int left,right;
   int oper;
   if (!ParseExpAdd(p,left)) return 0;
-  while ((oper=need(p,"<<>>")) || (oper=needa(p,"shl",'<'+'<',"shr",'>'))) {
+  while ((oper=need(p,const_cast<char *>("<<>>"))) || (oper=needa(p,"shl",'<'+'<',"shr",'>'))) {
     if (oper=='>'+'>' && p[0]=='>') { p.erase(0,1); oper='>'+'@'; }
     if (!ParseExpAdd(p,right)) return 0;
     switch (oper) {
@@ -264,7 +264,7 @@ int ParseExpMinMax(string &p, int &nval) {
   int left,right;
   int oper;
   if (!ParseExpShift(p,left)) return 0;
-  while (oper=need(p,"<?>?")) {
+  while (oper=need(p,const_cast<char *>("<?>?"))) {
     if (!ParseExpShift(p,right)) return 0;
     switch (oper) {
     case '<'+'?': left=left<right?left:right; break;
@@ -279,7 +279,7 @@ int ParseExpCmp(string &p, int &nval) {
   int left,right;
   int oper;
   if (!ParseExpMinMax(p,left)) return 0;
-  while (oper=need(p,"<=>=< > ")) {
+  while (oper=need(p,const_cast<char *>("<=>=< > "))) {
     if (!ParseExpMinMax(p,right)) return 0;
     switch (oper) {
     case '<': left=-(left<right); break;
@@ -296,7 +296,7 @@ int ParseExpEqu(string &p, int &nval) {
   int left,right;
   int oper;
   if (!ParseExpCmp(p,left)) return 0;
-  while (oper=need(p,"=_==!=")) {
+  while (oper=need(p,const_cast<char *>("=_==!="))) {
     if (!ParseExpCmp(p,right)) return 0;
     switch (oper) {
     case '=':
@@ -311,7 +311,7 @@ int ParseExpEqu(string &p, int &nval) {
 int ParseExpBitAnd(string &p, int &nval) {
   int left,right;
   if (!ParseExpEqu(p,left)) return 0;
-  while (need(p,"&_") || needa(p,"and",'&')) {
+  while (need(p,const_cast<char *>("&_")) || needa(p,"and",'&')) {
     if (!ParseExpEqu(p,right)) return 0;
     left&=right;
   }
@@ -321,7 +321,7 @@ int ParseExpBitAnd(string &p, int &nval) {
 int ParseExpBitXor(string &p, int &nval) {
   int left,right;
   if (!ParseExpBitAnd(p,left)) return 0;
-  while (need(p,"^ ") || needa(p,"xor",'^')) {
+  while (need(p,const_cast<char *>("^ ")) || needa(p,"xor",'^')) {
     if (!ParseExpBitAnd(p,right)) return 0;
     left^=right;
   }
@@ -331,7 +331,7 @@ int ParseExpBitXor(string &p, int &nval) {
 int ParseExpBitOr(string &p, int &nval) {
   int left,right;
   if (!ParseExpBitXor(p,left)) return 0;
-  while (need(p,"|_") || needa(p,"or",'|')) {
+  while (need(p,const_cast<char *>("|_")) || needa(p,"or",'|')) {
     if (!ParseExpBitXor(p,right)) return 0;
     left|=right;
   }
@@ -341,7 +341,7 @@ int ParseExpBitOr(string &p, int &nval) {
 int ParseExpDot(string &p, int &nval) {
   int left,right;
   if (!ParseExpBitOr(p,left)) return 0;
-  while (need(p,": ")) {
+  while (need(p,const_cast<char *>(": "))) {
     if (!ParseExpBitOr(p,right)) return 0;
     left=left*256+check8(right);
   }
