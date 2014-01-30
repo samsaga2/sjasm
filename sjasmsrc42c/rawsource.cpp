@@ -79,23 +79,23 @@ int RawSource::_nextline() {
 void RawSource::Process() {
   _it=_sl.begin();
   if (_it!=_sl.end()) do {
-    listopt.addlist(_source,*_it);
-    string line=*_it;
-    _Group1(line);
-    if (stop._stop) return;
-    ++_it;
-  } while (_it!=_sl.end());
+      listopt.addlist(_source,*_it);
+      string line=*_it;
+      _Group1(line);
+      if (stop._stop) return;
+      ++_it;
+    } while (_it!=_sl.end());
 }
 
 void RawSource::_Preprocess() {
   _it=_sl.begin();
   if (_it!=_sl.end()) do {
-    listopt.addlist(_source,*_it);
-    string line=_KillComments();
-    _Group1(line);
-    if (stop._stop) return;
-    ++_it;
-  } while (_it!=_sl.end());
+      listopt.addlist(_source,*_it);
+      string line=_KillComments();
+      _Group1(line);
+      if (stop._stop) return;
+      ++_it;
+    } while (_it!=_sl.end());
 }
 
 StringList RawSource::ReadUntil(StringList lnest, StringList lend, string unex) {
@@ -111,11 +111,11 @@ StringList RawSource::ReadUntil(StringList lnest, StringList lend, string unex) 
     if (_nextline()) { listopt=olistopt; return s; }
     p=line=_KillComments();
     skipblanks(p);
-      d=ReplaceDefines(getinstruction(p));                        // is dit wel zo slim?
-      for (iStringList i=lnest.begin(); i!=lnest.end(); ++i)
-        if (d==*i) { ++nest; break; }
-      for (iStringList i=lend.begin(); i!=lend.end(); ++i)
-        if (d==*i) { if (!--nest) { listopt=olistopt; return s; } break; }
+    d=ReplaceDefines(getinstruction(p));                        // is dit wel zo slim?
+    for (iStringList i=lnest.begin(); i!=lnest.end(); ++i)
+      if (d==*i) { ++nest; break; }
+    for (iStringList i=lend.begin(); i!=lend.end(); ++i)
+      if (d==*i) { if (!--nest) { listopt=olistopt; return s; } break; }
     s.push_back(line);
   }
 }

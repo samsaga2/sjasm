@@ -128,28 +128,28 @@ void listlistline16(int curlin, int page, int adr, string &line, Data &e, string
     } else {
       switch(e.size()) {
 #ifdef _DEBUG
-        case 0: case 1: case 3:
-          cout << "Noppa!\n";
-          break;
+      case 0: case 1: case 3:
+	cout << "Noppa!\n";
+	break;
 #endif
-        case 4:
-          ll.replace(29,4,tohex(e[2]+256*e[3]));
-        case 2:
-          ll.replace(24,4,tohex(e[0]+256*e[1]));
-          break;
-        default:
+      case 4:
+	ll.replace(29,4,tohex(e[2]+256*e[3]));
+      case 2:
+	ll.replace(24,4,tohex(e[0]+256*e[1]));
+	break;
+      default:
 #ifdef _DEBUG
-          if (e.size()&1) cout << "Noppa!\n";
+	if (e.size()&1) cout << "Noppa!\n";
 #endif
-          listfile.push_back(ll);
-          string l2;
-          int t=0;
-          while(1) {
-            if (!(t&15)) { l2=ll.substr(0,24); adr+=16; ll.replace(14,8,tohex(adr,8)); }
-            l2+=tohex(e[t]+256*e[t+1])+' '; t+=2;
-            if (t==e.size()) { ll=l2; break; }
-            if (!(t&15)) listfile.push_back(l2);
-          }
+	listfile.push_back(ll);
+	string l2;
+	int t=0;
+	while(1) {
+	  if (!(t&15)) { l2=ll.substr(0,24); adr+=16; ll.replace(14,8,tohex(adr,8)); }
+	  l2+=tohex(e[t]+256*e[t+1])+' '; t+=2;
+	  if (t==e.size()) { ll=l2; break; }
+	  if (!(t&15)) listfile.push_back(l2);
+	}
       }
     }
   listfile.push_back(ll);
@@ -171,27 +171,27 @@ void listlistline32(int curlin, int page, int adr, string &line, Data &e, string
     } else {
       switch(e.size()) {
 #ifdef _DEBUG
-        case 0: case 1: case 2: case 3:
-          cout << "Noppa!\n";
-          break;
+      case 0: case 1: case 2: case 3:
+	cout << "Noppa!\n";
+	break;
 #endif
-        case 4:
-          ll.replace(24,4,tohex(e[2]+256*e[3]));
-          ll.replace(28,4,tohex(e[0]+256*e[1]));
-          break;
-        default:
+      case 4:
+	ll.replace(24,4,tohex(e[2]+256*e[3]));
+	ll.replace(28,4,tohex(e[0]+256*e[1]));
+	break;
+      default:
 #ifdef _DEBUG
-          if (e.size()&3) cout << "Noppa!\n";
+	if (e.size()&3) cout << "Noppa!\n";
 #endif
-          listfile.push_back(ll);
-          string l2;
-          int t=0;
-          while(1) {
-            if (!(t&15)) { l2=ll.substr(0,24); adr+=16; ll.replace(14,8,tohex(adr,8)); }
-            l2+=tohex(e[t+2]+256*e[t+3])+tohex(e[t]+256*e[t+1])+' '; t+=4;
-            if (t==e.size()) { ll=l2; break; }
-            if (!(t&15)) listfile.push_back(l2);
-          }
+	listfile.push_back(ll);
+	string l2;
+	int t=0;
+	while(1) {
+	  if (!(t&15)) { l2=ll.substr(0,24); adr+=16; ll.replace(14,8,tohex(adr,8)); }
+	  l2+=tohex(e[t+2]+256*e[t+3])+tohex(e[t]+256*e[t+1])+' '; t+=4;
+	  if (t==e.size()) { ll=l2; break; }
+	  if (!(t&15)) listfile.push_back(l2);
+	}
       }
     }
   listfile.push_back(ll);
@@ -237,16 +237,16 @@ void listlist(SourceList &sl, StringList &pl) {
   iSourceList isl=sl.begin();
   while (isl!=sl.end()) {
     switch ((*isl)->getlisttype()) {
-      case NOLIST: (*isl)->Process(); break;
-      case LISTLINE:
-        if (!line.empty()) listlistline(ecurlin,epage,eadres,line,d,info);
-        (*isl)->Process(); epage=page; eadres=adres; ecurlin=curlin;
-        line=(*isl)->listline();
-        break;
-      case LISTDATA: (*isl)->Process(); d.push((*isl)->listdata()); break;
-      case LISTINFO: (*isl)->Process(); if (info.empty()) info=(*isl)->listline(); break;
-      case LISTPOOL: (*isl)->Process(); listpool(ecurlin,epage,eadres,(*isl)->listdata()); break;
-      default: error("listlist",ERRINTERNAL);
+    case NOLIST: (*isl)->Process(); break;
+    case LISTLINE:
+      if (!line.empty()) listlistline(ecurlin,epage,eadres,line,d,info);
+      (*isl)->Process(); epage=page; eadres=adres; ecurlin=curlin;
+      line=(*isl)->listline();
+      break;
+    case LISTDATA: (*isl)->Process(); d.push((*isl)->listdata()); break;
+    case LISTINFO: (*isl)->Process(); if (info.empty()) info=(*isl)->listline(); break;
+    case LISTPOOL: (*isl)->Process(); listpool(ecurlin,epage,eadres,(*isl)->listdata()); break;
+    default: error("listlist",ERRINTERNAL);
     }
     ++isl;
   }
@@ -276,12 +276,12 @@ void ListOpt::addlist(SourceList &sl,string line) {
   }
   string l;
   switch (_include) {
-    case 0:  l="  "; break;
-    case 1:  l=". "; break;
-    case 2:  l=": "; break;
-    case 3:  l=":."; break;
-    case 4:  l="::"; break; 
-    default: l=":>"; break;
+  case 0:  l="  "; break;
+  case 1:  l=". "; break;
+  case 2:  l=": "; break;
+  case 3:  l=":."; break;
+  case 4:  l="::"; break; 
+  default: l=":>"; break;
   }
   if (!ifstack.empty() && !ifstack.top()._active) l+='~'; else l+=_char;
   if (_inc) sl.push_back(new SourceListLineInc(l+line));
@@ -433,7 +433,7 @@ void StartMacro::Process() {
 }
 
 void EndMacro::Process() {
-//  if (!maclabstack.empty...
+  //  if (!maclabstack.empty...
   maclabp=macstack.top()._maclabp;
   if (pass!=1) {
     listopt._macroname=macstack.top()._name;
@@ -483,14 +483,14 @@ void dIncbin::Process() {
   int offset=0,length=_data.size(),val;
   if (comma(s)) {
     switch (comma(s)) {
-      case false:
-        if (ParseExpression(s,val)) { 
-          offset=val; length-=offset;
-        } else { error("Expression expected",ERRREP); return; }
-        if (!comma(s)) break;
-      case true:
-        if (ParseExpression(s,val)) length=val; else { error("Expression expected",ERRREP); return; }
-        break;
+    case false:
+      if (ParseExpression(s,val)) { 
+	offset=val; length-=offset;
+      } else { error("Expression expected",ERRREP); return; }
+      if (!comma(s)) break;
+    case true:
+      if (ParseExpression(s,val)) length=val; else { error("Expression expected",ERRREP); return; }
+      break;
     }
   }
   checkjunk(s);
@@ -523,12 +523,12 @@ void Repeat::Process() {
   if (ParseExpression(s,c)) {
     if (c<0) error("Negative repeat count");
     else while (c--) {
-      repeatstack.push_back(i);
-      _sn->Process();
-      repeatstack.pop_back();
-      _e.push(_sn->listdata());
-      ++i;
-    }
+	repeatstack.push_back(i);
+	_sn->Process();
+	repeatstack.pop_back();
+	_e.push(_sn->listdata());
+	++i;
+      }
   } else
     error("Syntax error");
   lablin=olablin+1;

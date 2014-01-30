@@ -72,7 +72,7 @@ using namespace std;
 const int BIGVALUE=2147483647; // :p
 
 struct Options {
-  Options() : listloops(false), listmacros(true), onlybp(false), useldradr(true), usemovlsl(true), allpages(false),
+Options() : listloops(false), listmacros(true), onlybp(false), useldradr(true), usemovlsl(true), allpages(false),
     optimizejumps(false) {}
   bool listloops;
   bool listmacros;

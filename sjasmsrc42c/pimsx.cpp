@@ -47,7 +47,7 @@ enum Z80Reg { Z80_B=0,Z80_C,Z80_D,Z80_E,Z80_H,Z80_L,Z80_A=7,
               Z80mnn=Z80_nn+0x100,
               Z80mC=Z80_C+0x100,
               Z80_DUMMY
-            };
+};
 
 Z80Reg getz80reg(string &ns) {
   Z80Reg res=Z80_UNK;
@@ -255,11 +255,11 @@ void getOperand(string &ns, Op &op) {
   else if (!options.onlybp && s[0]=='(') { op.ind=1; blokhaakje=0; hs=s; s.erase(0,1); }
   op.reg=getz80reg(s);
   if (op.ind && 
-     (op.reg==Z80_IX  || op.reg==Z80_IY ||
-      op.reg==Z80miIX || op.reg==Z80miIY || 
-      op.reg==Z80mdIX || op.reg==Z80mdIY || 
-      op.reg==Z80mIXi || op.reg==Z80mIYi || 
-      op.reg==Z80mIXd || op.reg==Z80mIYd )) { 
+      (op.reg==Z80_IX  || op.reg==Z80_IY ||
+       op.reg==Z80miIX || op.reg==Z80miIY || 
+       op.reg==Z80mdIX || op.reg==Z80mdIY || 
+       op.reg==Z80mIXi || op.reg==Z80mIYi || 
+       op.reg==Z80mIXd || op.reg==Z80mIYd )) { 
     synerr=0; if (ParseExpression(s,op.val)) op.ind=3; synerr=1; 
   } else if (op.reg==Z80_UNK) {
     if (op.ind && !blokhaakje) s='('+s;
@@ -341,15 +341,15 @@ int getJumpOperands2(string &s, Op &x, Op &y) {
 }
 void NegateCondition(Z80Reg &x) {
   switch (x) {
-    case Z80_C: x=Z80_NC; break;
-    case Z80_M: x=Z80_P; break;
-    case Z80_NC: x=Z80_C; break;
-    case Z80_NZ: x=Z80_Z; break;
-    case Z80_P: x=Z80_M; break;
-    case Z80_PE: x=Z80_PO; break;
-    case Z80_PO: x=Z80_PE; break;
-    case Z80_Z: x=Z80_NZ; break;
-    default: error("Cannot negate condition");
+  case Z80_C: x=Z80_NC; break;
+  case Z80_M: x=Z80_P; break;
+  case Z80_NC: x=Z80_C; break;
+  case Z80_NZ: x=Z80_Z; break;
+  case Z80_P: x=Z80_M; break;
+  case Z80_PE: x=Z80_PO; break;
+  case Z80_PO: x=Z80_PE; break;
+  case Z80_Z: x=Z80_NZ; break;
+  default: error("Cannot negate condition");
   }
 }
 
@@ -673,7 +673,7 @@ void pmDJNZ(string line,Data &e) {
       if (opt) {
         e[0]=0x05; e[1]=0xc2; check16(x.val); e[2]=x.val&255; e[3]=x.val>>8;
       } else {
-      errortarget(jmp); jmp=0;
+	errortarget(jmp); jmp=0;
       }
     } else {
       e[0]=0x10; e[1]=jmp;

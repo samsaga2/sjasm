@@ -33,11 +33,11 @@ enum FORGETMODE { NEVERFORGET, DOFORGET };
 enum ALIGNMODE { NORMAL, FIXEDADR, BYTEADR, RANGEADR };
 
 class Rout {
-public:
-  Rout() : _adres(adres), _pooladres(adres),_page(page), _minadres(adres), _align(1), _overlay(false),
+ public:
+ Rout() : _adres(adres), _pooladres(adres),_page(page), _minadres(adres), _align(1), _overlay(false),
     _lastused(0), _adrmode(ANYADRES), _forgetmode(NEVERFORGET), _forget(false), _labelindex(0), _byteadr(false),
     _curlin(curlin),_listcurlin(listcurlin),_sourcefile(listopt._filename), _maxadres(0), _multipage(false) {
-      routlabel=this; _pages.clear(); _pages.push_back(page); _data.clear(); _pool.clear();
+    routlabel=this; _pages.clear(); _pages.push_back(page); _data.clear(); _pool.clear();
   }
   void emit(const Data &e) { _data.push(e); }
   int pool(int d);
@@ -58,8 +58,8 @@ public:
   string &getsourcefile() { return _sourcefile; }
   IntList &getpool() { return _pool; }
 
-//  unsigned int getsize() { return _data.size(); } //##
-private:
+  //  unsigned int getsize() { return _data.size(); } //##
+ private:
   int _adres, _page, _lastused,_pooladres,_multipage;
   bool _forget,_overlay, _byteadr;
   int _minadres, _maxadres, _align;
@@ -73,11 +73,11 @@ private:
 };
 
 class Part {
-public:
-  Part(int n_rnr, int n_page, int n_adres, int n_len, int n_align, ALIGNMODE n_alignmode, Rout *n_rout, 
-    int n_multipage)
-    : _rnr(n_rnr), _page(n_page), _adres(n_adres), _len(n_len), _align(n_align),
-      _alignmode(n_alignmode), _rout(n_rout), _multipage(n_multipage) {}
+ public:
+ Part(int n_rnr, int n_page, int n_adres, int n_len, int n_align, ALIGNMODE n_alignmode, Rout *n_rout, 
+      int n_multipage)
+   : _rnr(n_rnr), _page(n_page), _adres(n_adres), _len(n_len), _align(n_align),
+    _alignmode(n_alignmode), _rout(n_rout), _multipage(n_multipage) {}
   void dump(int&,StringList&);
   void dumpo(StringList&);
   ALIGNMODE _alignmode;
@@ -87,12 +87,12 @@ public:
 };
 
 class Page {
-public:
-  Page(int n_pagenr, int n_org, int n_size) :
-      _pagenr(n_pagenr), _org(n_org), _size(n_size), _usedsize(0), _highestad(0) {
-        _part.clear(); _opart.clear(); /*_pool.clear();*/
-        _relorg=(_org==-1);
-      }
+ public:
+ Page(int n_pagenr, int n_org, int n_size) :
+  _pagenr(n_pagenr), _org(n_org), _size(n_size), _usedsize(0), _highestad(0) {
+    _part.clear(); _opart.clear(); /*_pool.clear();*/
+    _relorg=(_org==-1);
+  }
   void setsize(int);
   int getusedsize() { return _usedsize; }
   int gethighestad() { return _highestad; }
@@ -107,27 +107,27 @@ public:
   int addpart(Part &n_part);
   bool addfirstpart(Part &n_part,int offset,int size);
   bool addlastpart(Part &n_part,int adres,int size);
-//  void addpool(int,int); //
+  //  void addpool(int,int); //
   void checkparts();
   void dump(StringList&);
   void save(WriteFile &file);
   void saveoverlay(WriteFile &file);
-private:
-//  struct _Pool { 
-//    _Pool (int n_data,int n_adres) : _data(n_data), _adres(n_adres) {}
-//    int _data, _adres;
-//  };
+ private:
+  //  struct _Pool { 
+  //    _Pool (int n_data,int n_adres) : _data(n_data), _adres(n_adres) {}
+  //    int _data, _adres;
+  //  };
   int _pagenr, _org, _size, _highestad, _usedsize;
   bool _relorg;
   list<Part> _part;
   list<Part> _opart;
-//  list<_Pool> _pool;
+  //  list<_Pool> _pool;
 };
 
 class Output {
-public:
-  Output(string n_filename,FILEMODE n_mode=OVERWRITE) :
-      _filename(n_filename), _mode(n_mode), _rn(0), _outp(0), _org(-1) { _page.clear(); _rout.clear(); }
+ public:
+ Output(string n_filename,FILEMODE n_mode=OVERWRITE) :
+  _filename(n_filename), _mode(n_mode), _rn(0), _outp(0), _org(-1) { _page.clear(); _rout.clear(); }
   Rout *getroutp() { if (_rout.empty()) { _rout.push_back(new Rout()); _rn=0; } return _outp=_rout[_rn]; }
   Rout *getnewroutp() { _rout.push_back(new Rout()); _rn=(int)_rout.size()-1; return _outp=_rout[_rn]; }
   int getrout() { return _rn; }
@@ -146,7 +146,7 @@ public:
   void dump(StringList&);
   void sort();
   void save();
-private:
+ private:
   string _filename;
   FILEMODE _mode;
   vector<Page*> _page;
@@ -154,7 +154,7 @@ private:
   int _rn, _org;
   Rout *_outp;
 
-//  vector<unsigned int> _routlen;  //##
+  //  vector<unsigned int> _routlen;  //##
 };
 
 void resetoutput();

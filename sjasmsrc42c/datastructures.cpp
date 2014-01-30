@@ -218,8 +218,8 @@ int DefineTable::exists(string name,int narg) {
   while(htr=_hashtable[tr]) {
     if (_deftab[htr]._name==name && !_deftab[htr]._used) {
       if (narg) {
-       if (!_deftab[htr]._args.size()) return -1;
-       if (narg==_deftab[htr]._args.size()) return htr;
+	if (!_deftab[htr]._args.size()) return -1;
+	if (narg==_deftab[htr]._args.size()) return htr;
       } else {
         if (_deftab[htr]._args.size()) return -1;
         return htr;
@@ -234,8 +234,8 @@ int DefineTable::exists(string name,int narg) {
   while(htr=_hashtable[tr]) {
     if (_deftab[htr]._name==name && _deftab[htr]._icase && !_deftab[htr]._used) {
       if (narg) {
-       if (!_deftab[htr]._args.size()) return -1;
-       if (narg==_deftab[htr]._args.size()) return htr;
+	if (!_deftab[htr]._args.size()) return -1;
+	if (narg==_deftab[htr]._args.size()) return htr;
       } else {
         if (_deftab[htr]._args.size()) return -1;
         return htr;

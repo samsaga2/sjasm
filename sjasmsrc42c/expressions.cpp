@@ -59,7 +59,7 @@ int getLabelValue(string &ns, int &nval, int &npag) {
     while(1) {
       if (labtab.getvalue(mlp+'>'+n,nval,npag)) return 1;
       loc=(int)mlp.find_last_of('.');
-        if (loc!=string::npos) mlp=mlp.substr(0,loc); else break;
+      if (loc!=string::npos) mlp=mlp.substr(0,loc); else break;
     }
     loc=1;
   }
@@ -132,7 +132,7 @@ int getConstant(string &p, int &nval) {
     if (base!=10) p.erase(0,1);
     return c;
   }
-//  return 0;
+  //  return 0;
 }
 
 int getCharConst(string &p, int &nval) {

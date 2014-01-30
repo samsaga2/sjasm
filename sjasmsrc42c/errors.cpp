@@ -60,11 +60,11 @@ void error(int line, int listline, string e, string a, int i) {
   }
 
   if (i==ERRFATAL || i==ERRINTERNAL) {
-//#ifdef _DEBUG
+    //#ifdef _DEBUG
     cout << msg << endl;
     cout << "FATAL ERROR - PRESS ENTER" << endl;
     cin.get();
-//#endif
+    //#endif
     exit(1);
   }
 }

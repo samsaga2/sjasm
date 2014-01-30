@@ -66,11 +66,11 @@ string trim(string);
 void getpage(string&,IntList&);
 
 class Find {
-public:
+ public:
   Find(char*s) { for (int i=0;i!=256;++i) _c[i]=false; while (*s) _c[*s++]=true; }
   int find(string&s) { for (int i=0;i!=(int)s.size();++i) if (_c[s[i]]) return i; return (int)string::npos; }
   int findnot(string&s) { for (int i=0;i!=(int)s.size();++i) if (!_c[s[i]]) return i; return (int)string::npos; }
-private:
+ private:
   bool _c[256];
 };
 

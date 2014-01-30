@@ -74,13 +74,13 @@ string getfilename(string &p) {
 }
 
 ReadFile::ReadFile(string n_name) : _buffer(0) {
-    FILE *file;
-    if ((file=fopen(n_name.c_str(),"rb"))==NULL) { error1("Error opening file",n_name); return; }
-    fseek(file,0,SEEK_END); _size=ftell(file); fseek(file,0,SEEK_SET);
-    _buffer=new unsigned char[_size+1];
-    if (fread(_buffer,_size,1,file)) _buffer[_size]=0;
-    else { _buffer=0; error1("Error opening file",n_name); }
-    fclose(file);
+  FILE *file;
+  if ((file=fopen(n_name.c_str(),"rb"))==NULL) { error1("Error opening file",n_name); return; }
+  fseek(file,0,SEEK_END); _size=ftell(file); fseek(file,0,SEEK_SET);
+  _buffer=new unsigned char[_size+1];
+  if (fread(_buffer,_size,1,file)) _buffer[_size]=0;
+  else { _buffer=0; error1("Error opening file",n_name); }
+  fclose(file);
 }
 
 ReadFile::~ReadFile() {
