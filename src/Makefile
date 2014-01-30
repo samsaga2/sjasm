@@ -10,8 +10,8 @@ OBJECTS  = datadir.o datastructures.o directives.o errors.o expressions.o fileio
 
 BINDIR   = /usr/local/bin
 
-CXXFLAGS = -O2
-LDFLAGS  = 
+CXXFLAGS = -O2 -ggdb
+LDFLAGS  =
 
 DEPDIR = .deps
 DEPFILE = $(DEPDIR)/$(*F)
@@ -20,14 +20,13 @@ all: $(TARGETS)
 
 sjasm$(EXTENSION): $(DEPDIR) $(OBJECTS)
 	$(CXX) $(LDFLAGS) -o $@ $(OBJECTS) 
-	strip $@
 
 clean:
 	$(RM) $(OBJECTS) $(TARGETS)
 	$(RM) -r $(DEPDIR)	
 
 install: all
-	cp -f $(TARGETS) $(BINDIR)
+	install $(TARGETS) $(BINDIR)
 
 %.o : %.cpp
 	$(CXX) -Wp,-MD,$(DEPFILE).d $(CXXFLAGS) -c -o $@ $<

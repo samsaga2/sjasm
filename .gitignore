@@ -2,3 +2,4 @@
 ./sjasm.exe
 *.o
 .deps
+./src/sjasm
