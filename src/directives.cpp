@@ -211,6 +211,13 @@ void dirERROR(string &line, RawSource *) {
   line.clear();
 }
 
+void dirECHO(string &line, RawSource *) {
+  skipblanks(line);
+  cout << "echo: " << line << endl;
+  error(line,ERRPASS1);
+  line.clear();
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 FunctionTable<pFun,RawSource> dirfuntab;
@@ -238,6 +245,7 @@ void initDir() {
     const_cast<char *>("org"),dirORG,
     const_cast<char *>("size"),dirSIZE,
     const_cast<char *>("error"),dirERROR,
+    const_cast<char *>("echo"),dirECHO,
     const_cast<char *>("z80"),dirZ80,
     const_cast<char *>("incbin."),dirINCBINDOT,
   };
