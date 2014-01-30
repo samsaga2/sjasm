@@ -24,6 +24,8 @@
 
 */
 
+#pragma once
+
 const int FUNTABSIZE=255;
 
 #include <cstring>

@@ -73,4 +73,3 @@ class Find {
  private:
   bool _c[256];
 };
-

@@ -48,4 +48,3 @@ enum { ROTATE=-1, ITERATION=-2, BREAK=1, CONTINUE, EXITMACRO, END };
 
 void initpreprocessor();
 string ReplaceDefines(string);
-

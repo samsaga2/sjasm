@@ -24,6 +24,8 @@
 
 */
 
+#pragma once
+
 #define VERSION "004230"
 
 #ifdef WIN32

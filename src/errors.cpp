@@ -129,4 +129,3 @@ void ErrorTable::_grow() {
     _hashtable[tr]=i;
   }
 }
-

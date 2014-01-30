@@ -30,4 +30,3 @@ extern FunctionTable<pFun,RawSource> dirfuntab;
 
 void initDir();
 void dirCODE(string&,RawSource*);
-

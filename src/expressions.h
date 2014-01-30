@@ -30,4 +30,3 @@ extern Find findlabelchar;
 int getval(string &p, int &nval, unsigned int base, int len=-1);
 int getConstant(string&,int&);
 int ParseExpression(string&,int&);
-

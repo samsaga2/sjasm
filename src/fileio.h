@@ -24,6 +24,8 @@
 
 */
 
+#pragma once
+
 enum FILEMODE { OVERWRITE, UPDATE };
 extern StringList paths;
 
@@ -57,4 +59,3 @@ private:
   FILEMODE _mode;
   Data _buffer;
 };
-

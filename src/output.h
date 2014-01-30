@@ -162,4 +162,3 @@ void sortoutput();
 void dumpoutput(StringList&);
 void saveoutput();
 void setoutput(int);
-
