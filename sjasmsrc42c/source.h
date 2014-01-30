@@ -24,6 +24,8 @@
 
 */
 
+#pragma once
+
 class SourceNode;
 
 enum { NOLIST, LISTLINE, LISTDATA, LISTINFO, LISTPOOL };

@@ -24,6 +24,8 @@
 
 */
 
+#pragma once
+
 extern Rout *routlabel;
 
 enum ADRMODE { ATADRES, ARANGE, ANYADRES, ANYADRESMULTI };

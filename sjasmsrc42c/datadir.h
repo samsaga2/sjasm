@@ -24,6 +24,8 @@
 
 */
 
+#pragma once
+
 extern FunctionTable<pFun,RawSource> datafuntab;
 
 void initPidata();

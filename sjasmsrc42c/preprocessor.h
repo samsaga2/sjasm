@@ -24,6 +24,8 @@
 
 */
 
+#pragma once
+
 struct ifinfo {
   bool _active;
   bool _beenactive;

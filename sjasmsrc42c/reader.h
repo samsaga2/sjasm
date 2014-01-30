@@ -24,6 +24,8 @@
 
 */
 
+#pragma once
+
 int cmphstr(string&,string);
 int getstringlength(string&);
 void skipstring(istring&);
