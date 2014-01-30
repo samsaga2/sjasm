@@ -228,18 +228,22 @@ void RawSource::_Group2(string &line) {
 
 void RawSource::_CutLines(string &line) {
   string res="";
-  unsigned pos;
   while ('o') {
-    pos=(int)line.find_first_of("\\\"'");
-    if (pos) res+=line.substr(0,pos);
-    if (pos==string::npos) break;
+    size_t pos=line.find_first_of("\\\"'");
+    if (pos==string::npos) {
+      res += line;
+      break;
+    }
+    res += line.substr(0,pos);
     line=line.substr(pos);
     if (line[0]=='\\') {
       _Parse(res);
-      res.clear(); line.erase(0,1);
+      res.clear();
+      line.erase(0,1);
     } else {
       pos=getstringlength(line);
-      res+=line.substr(0,pos); line=line.substr(pos);
+      res+=line.substr(0,pos);
+      line=line.substr(pos);
     }
   }
   if (!res.empty()) _Parse(res);

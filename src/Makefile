@@ -10,7 +10,8 @@ OBJECTS  = datadir.o datastructures.o directives.o errors.o expressions.o fileio
 
 BINDIR   = /usr/local/bin
 
-CXXFLAGS = -O2 -ggdb
+CXXFLAGS = -O2
+#CXXFLAGS = -ggdb
 LDFLAGS  =
 
 DEPDIR = .deps
