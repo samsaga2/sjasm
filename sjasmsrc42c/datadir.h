@@ -24,11 +24,8 @@
 
 */
 
-// datadir.h
-
 extern FunctionTable<pFun,RawSource> datafuntab;
 
 void initPidata();
 void getbytes(string&,Data&,bool=false,bool=false,bool=true,bool=false,bool=false);
 
-//eof

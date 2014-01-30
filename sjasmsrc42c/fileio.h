@@ -24,8 +24,6 @@
 
 */
 
-// fileio.h
-
 enum FILEMODE { OVERWRITE, UPDATE };
 extern StringList paths;
 
@@ -60,4 +58,3 @@ private:
   Data _buffer;
 };
 
-//eof

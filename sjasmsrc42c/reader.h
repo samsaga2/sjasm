@@ -24,8 +24,6 @@
 
 */
 
-// reader.h
-
 int cmphstr(string&,string);
 int getstringlength(string&);
 void skipstring(istring&);
@@ -74,4 +72,3 @@ class Find {
   bool _c[256];
 };
 
-//eof

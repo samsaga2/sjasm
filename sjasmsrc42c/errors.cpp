@@ -24,8 +24,6 @@
 
 */
 
-// errors.cpp
-
 #include <cstdlib>
 #include "sjasm.h"
 
@@ -132,4 +130,3 @@ void ErrorTable::_grow() {
   }
 }
 
-//eof

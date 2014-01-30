@@ -24,8 +24,6 @@
 
 */
 
-// datadir.cpp
-
 #include "sjasm.h"
 
 byte map[256];
@@ -312,5 +310,3 @@ void initPidata() {
   datafuntab.init(funs, sizeof funs/sizeof funs[0]);
   for (int i=0; i!=256; ++i) smap[i]=map[i]=(byte)i;
 }
-
-//eof

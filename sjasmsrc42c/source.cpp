@@ -24,8 +24,6 @@
 
 */
 
-// source.cpp
-
 #include "sjasm.h"
 
 ListOpt listopt;
@@ -544,5 +542,3 @@ void dAssert::Process() {
       error("Expression expected");
   }
 }
-
-//eof

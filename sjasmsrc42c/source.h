@@ -24,8 +24,6 @@
 
 */
 
-// source.h
-
 class SourceNode;
 
 enum { NOLIST, LISTLINE, LISTDATA, LISTINFO, LISTPOOL };
@@ -397,5 +395,3 @@ public:
 private:
   string _line;
 };
-
-//eof

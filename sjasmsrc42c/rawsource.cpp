@@ -24,8 +24,6 @@
 
 */
 
-// rawsource.cpp
-
 #include <cstdlib>
 #include "sjasm.h"
 
@@ -453,5 +451,3 @@ void RSStructure::_Parse(string &line) {
     _offset+=len;
   }
 }
-
-//eof

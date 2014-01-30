@@ -24,8 +24,6 @@
 
 */
 
-// expressions.cpp
-
 #include "sjasm.h"
 
 Find findlabelchar(const_cast<char *>("qazxswedcvfrtgbnhyujmkiolpQWERTYUIOPLKJHGFDSAZXCVBNM0123456789_."));
@@ -360,5 +358,3 @@ int ParseExpression(string &p, int &nval) {
   nval=0; 
   return 0;
 }
-
-//eof

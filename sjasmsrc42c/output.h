@@ -24,8 +24,6 @@
 
 */
 
-// output.h
-
 extern Rout *routlabel;
 
 enum ADRMODE { ATADRES, ARANGE, ANYADRES, ANYADRESMULTI };
@@ -163,4 +161,3 @@ void dumpoutput(StringList&);
 void saveoutput();
 void setoutput(int);
 
-//eof

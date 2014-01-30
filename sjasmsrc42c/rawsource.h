@@ -24,8 +24,6 @@
 
 */
 
-// rawsource.h
-
 class RawSource {
 public:
   RawSource(string);
@@ -74,5 +72,3 @@ private:
   bool _global, _mustalign;
   Structure &_s;
 };
-
-//eof

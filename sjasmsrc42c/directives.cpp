@@ -24,8 +24,6 @@
 
 */
 
-// directives.cpp
-
 #include "sjasm.h"
 
 int prevorg=0, prevsize=-1;
@@ -265,5 +263,3 @@ void initDir() {
   };
   dirfuntab.init(funs, sizeof funs/sizeof funs[0]);
 }
-
-//eof

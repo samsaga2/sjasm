@@ -24,9 +24,5 @@
 
 */
 
-// pimsx.h
-
 void initPiMSX();
 void pimsx(string&,SourceList*);
-
-//eof

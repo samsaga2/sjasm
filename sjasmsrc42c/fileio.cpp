@@ -24,8 +24,6 @@
 
 */
 
-// fileio.cpp
-
 #include <cstdio>
 #include "sjasm.h"
 
@@ -136,5 +134,3 @@ void WriteFile::_writebuf() {
   if (_buffer.size()) if((int)fwrite(_buffer.getdatap(),1,_buffer.size(),_file)<_buffer.size()) error("Write error",ERRFATAL);
   _buffer.clear();
 }
-
-//eof

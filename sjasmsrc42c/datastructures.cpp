@@ -24,8 +24,6 @@
 
 */
 
-// datastructures.cpp
-
 #include "sjasm.h"
 
 void startmacrolabel(RawSource *rs, string name, string file, int line) {
@@ -741,5 +739,3 @@ void StructTable::_grow() {
     _hashtable[tr]=i;
   }
 }
-
-//eof

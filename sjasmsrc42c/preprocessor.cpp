@@ -24,8 +24,6 @@
 
 */
 
-// preprocessor.cpp
-
 #include "sjasm.h"
 
 DefineTable deftab;
@@ -888,5 +886,3 @@ void initpreprocessor() {
   structureel.push_back("endstruct");
   structureel.push_back("ends");
 }
-
-//eof

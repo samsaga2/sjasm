@@ -24,8 +24,6 @@
 
 */
 
-// reader.cpp
-
 #include <cstdlib>
 #include "sjasm.h"
 
@@ -453,5 +451,3 @@ void getpage(string &s, IntList &p) {
     else ++ii;
   if (!p.size()) p.push_back(0);
 }
-
-//eof

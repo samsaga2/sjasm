@@ -199,5 +199,3 @@ int main(int argc, char *argv[]) {
 
   return (errors+adrerrors)!=0;
 }
-
-//eof

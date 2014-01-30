@@ -24,8 +24,6 @@
 
 */
 
-// pimsx.cpp
-
 #include "sjasm.h"
 
 enum Z80Reg { Z80_B=0,Z80_C,Z80_D,Z80_E,Z80_H,Z80_L,Z80_A=7,
@@ -1689,5 +1687,3 @@ void pimsx(string &line,SourceList *source) {
   source->push_back(new Mnemonic(line,funp));
   source->back()->Process();
 }
-
-//eof

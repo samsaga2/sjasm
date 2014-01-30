@@ -24,8 +24,6 @@
 
 */
 
-// errors.h
-
 enum { ERRNORMAL,ERRFATAL,ERRINTERNAL,ERRLPASS,ERRREP,ERRPASS1 };
 
 void error(int curlin, int listcurlin, string error, string args,int=0);
@@ -62,4 +60,3 @@ private:
 
 extern ErrorTable errtab;
 
-//eof

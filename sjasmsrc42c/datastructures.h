@@ -24,8 +24,6 @@
 
 */
 
-// datastructures.h
-
 const int FUNTABSIZE=255;
 
 #include <cstring>
@@ -338,5 +336,3 @@ private:
   int _hash(string);
   void _grow();
 };
-
-//eof

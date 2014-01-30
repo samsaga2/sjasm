@@ -24,8 +24,6 @@
 
 */
 
-// sjasm.h
-
 #define VERSION "004230"
 //#define METARM
 
@@ -130,5 +128,3 @@ extern vector<Output*> output;
 extern int onr;
 
 extern void (*piCPU)(string&,SourceList*);
-
-//eof

@@ -24,8 +24,6 @@
 
 */
 
-// output.cpp
-
 #include "sjasm.h"
 
 Rout *routlabel;
@@ -577,5 +575,3 @@ void saveoutput() {
 void setoutput(int nonr) {
   onr=nonr;
 }
-
-//eof
