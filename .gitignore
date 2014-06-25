@@ -1,5 +1,3 @@
-./sjasm
-./sjasm.exe
 *.o
 .deps
-./src/sjasm
+src/sjasm

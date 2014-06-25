@@ -7,7 +7,6 @@ Have fun.
 Installation
 ============
 ```
-cd src
 make
 sudo make install
 ```
