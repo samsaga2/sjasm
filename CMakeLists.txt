@@ -5,3 +5,4 @@ file(GLOB sjasm_SRC
     "src/*.cpp"
 )
 add_executable(sjasm ${sjasm_SRC})
+install_targets(/bin sjasm)
