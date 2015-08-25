@@ -7,6 +7,7 @@ Have fun.
 Installation
 ============
 ```
+cmake .
 make
 sudo make install
 ```
