@@ -1,5 +1,6 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5)
 project(sjasm)
+set(CMAKE_CXX_STANDARD 11)
 file(GLOB sjasm_SRC
     "src/*.h"
     "src/*.cpp"
